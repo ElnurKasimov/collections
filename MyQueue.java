@@ -2,11 +2,11 @@ package Collections;
 
 import java.util.Arrays;
 
-public class MyArrayList <T>{
+public class MyQueue<T>{
    private int size;
    private T [] values;
 
-    public MyArrayList() {
+    public MyQueue() {
         this.size = 0;
         this.values =  (T[]) new Object [30];
     }
@@ -28,8 +28,6 @@ public class MyArrayList <T>{
     }
 
     public void add(T t) {
-        // надо бы добавить проверку на соответствие типа
-        // а то компилятор прерывает выпонение если идет несооответствие
         if (size == values.length) {
             int newsize = (int) (size*1.5) ;
             T[] temp = (T[]) new Object [newsize];
@@ -59,6 +57,14 @@ public void clear () {
 
     public  T get(int index) { return values[index];}
 
+    public T peek() {
+        return values[0];
+    }
+    public T poll() {
+        T temp = values[0];
+        this.remove(0);
+        return temp;
+    }
 
     public String toString(){
         if (this.getSize() == 0) {return "[null]";}
