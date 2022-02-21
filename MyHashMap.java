@@ -32,8 +32,16 @@ public class MyHashMap<K, V> {
             lastNode.next = node;
             node.prev = lastNode;
             last.prev = node;
-
             size++;
+
+            // проверка на уканикальность ключа
+            Node currentElement = first.next;
+            while ( !(currentElement.key).equals(key) ){
+                currentElement = currentElement.next;}
+            if (currentElement.value != node.value) {
+                remove(currentElement.key);
+                size--;
+            }
         }
 
     public V get (Object key) {
@@ -79,12 +87,12 @@ public class MyHashMap<K, V> {
                 if (this == o) return true;
                 if (!(o instanceof Node)) return false;
                 Node<?, ?> node = (Node<?, ?>) o;
-                return key.equals(node.key);
+                return key.equals(node.key) && value.equals(node.value);
             }
 
             @Override
             public int hashCode() {
-                return Objects.hash(key);
+                return Objects.hash(key, value);
             }
         }
     }

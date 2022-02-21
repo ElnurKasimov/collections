@@ -114,10 +114,11 @@ public class CollectionsTesting {
         myHashMap.put("Валентина Ивановна", "846-67-52");
         myHashMap.put("Жена", "4356-45-78");
         myHashMap.put("Офис", "735-42-67");
+        myHashMap.put("Сан Саныч", "111-11-11");
         myHashMap.put("Светка", "369-25-74");
         myHashMap.put("Теща", "137-764-52");
-        System.out.println("Проверяем создание списка и метода put(). " +
-                "Содержимое списка после добавления в него 6 пар элементов:" );
+        System.out.println("Проверяем создание списка и метода put(). С учетом уникальности ключей. \n " +
+                "Содержимое списка после добавления в него 6 пар элементов (2 ключа совпадают):" );
         myHashMap.printAll();
         System.out.println("Проверяем метод size(). Размер словаря - " + myHashMap.size());
         System.out.println("Проверяем метод get(Object key). Для ключа \"Офис\" значение - " + myHashMap.get("Офис").toString());
