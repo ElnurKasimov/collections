@@ -11,38 +11,40 @@ public class MyHashMap<K, V> {
             first.next = last;
             last.prev = first;
             size=0;
-        }
+    }
 
-        public void printAll() {
-            Node currentElement = first.next;
-            System.out.print("[");
-            while ((currentElement) != null) {
-                System.out.println("Ключ " +currentElement.key.toString() + " -  значение " + currentElement.value.toString()  + "," );
-                currentElement = currentElement.next;
+    public void printAll() {
+        Node currentElement = first.next;
+        System.out.print("[");
+        while ((currentElement) != null) {
+            System.out.println("Ключ: " +currentElement.key.toString() + ",  значение: " + currentElement.value.toString()  + "," );
+            currentElement = currentElement.next;
+        }
+        System.out.println("]");
+    }
+
+    public void put  (K key, V value) {
+
+        Node node = new Node();
+        node.key = key;
+        node.value = value;
+
+        Node lastNode = last.prev;
+        lastNode.next = node;
+        node.prev = lastNode;
+        last.prev = node;
+        size++;
+
+        // проверка на уканикальность ключа
+
+        Node currentElement= first.next;
+        while (currentElement != node) {
+            if( currentElement.key.equals(key) ) {
+                remove(key);
             }
-            System.out.println("]");
+            currentElement= currentElement.next;
         }
-
-        public void put  (K key, V value) {
-            Node node = new Node();
-            node.key = key;
-            node.value = value;
-
-            Node lastNode = last.prev;
-            lastNode.next = node;
-            node.prev = lastNode;
-            last.prev = node;
-            size++;
-
-            // проверка на уканикальность ключа
-            Node currentElement = first.next;
-            while ( !(currentElement.key).equals(key) ){
-                currentElement = currentElement.next;}
-            if (currentElement.value != node.value) {
-                remove(currentElement.key);
-                size--;
-            }
-        }
+    }
 
     public V get (Object key) {
         Node currentElement = first.next;

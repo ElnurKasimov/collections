@@ -40,11 +40,11 @@ public class MyStack<T>{
 
     public void remove (int index ) {
         for (int i = index; i < size ; i++) {
-            values[size] = null;
+            values[i] = values[i+1];
         }
-        size-=index;
+        values[size] = null;
+        size--;
     }
-
 
     public void clear () {
         for (int i = 0; i < size; i++) values[i] = null;

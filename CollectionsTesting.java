@@ -109,6 +109,7 @@ public class CollectionsTesting {
         // -------------------------проверка класса MyHashMap-----------------------------------------------
 
         System.out.print("\n----------------------------------проверка класса MyHashMap------------------------------------\n");
+        /*
         MyHashMap <String , String>  myHashMap = new MyHashMap<>();
         myHashMap.put("Сан Саныч", "321-48-65");
         myHashMap.put("Валентина Ивановна", "846-67-52");
@@ -117,18 +118,30 @@ public class CollectionsTesting {
         myHashMap.put("Сан Саныч", "111-11-11");
         myHashMap.put("Светка", "369-25-74");
         myHashMap.put("Теща", "137-764-52");
+        */
+        MyHashMap <Integer , String>  myHashMap = new MyHashMap<>();
+        myHashMap.put(1, "первый");
+        myHashMap.put(2, "второй");
+        myHashMap.put(1, "третий");
+        myHashMap.put(1, "четвертый");
+        myHashMap.put(1, "пятый");
+        myHashMap.put(6, "шестой");
+
         System.out.println("Проверяем создание списка и метода put(). С учетом уникальности ключей. \n " +
-                "Содержимое списка после добавления в него 6 пар элементов (2 ключа совпадают):" );
+                "Содержимое списка после добавления в него 6 пар элементов (4 ключа совпадают):" );
         myHashMap.printAll();
         System.out.println("Проверяем метод size(). Размер словаря - " + myHashMap.size());
-        System.out.println("Проверяем метод get(Object key). Для ключа \"Офис\" значение - " + myHashMap.get("Офис").toString());
-        System.out.println("Проверяем метод remove(Object key). Удаляем пару значений \'Светка - 369-25-74 \' и распечатываем все элементы коллекции ");
-        myHashMap.remove("Светка");
+        System.out.println("Проверяем метод get(Object key). ");
+        System.out.println("Для ключа 1 значение - " + myHashMap.get(1).toString());
+        System.out.println("Для ключа 2 значение - " + myHashMap.get(2).toString());
+        System.out.println("Проверяем метод remove(Object key). Удаляем пару значений \'1 - пятый \' и распечатываем все элементы коллекции ");
+        myHashMap.remove(1);
         myHashMap.printAll();
         System.out.println("Размер списка после удаления этой пары - " + myHashMap.size());
         System.out.println("Проверяем метод clear(). Распечатать список после его очистки не можем, так как будет ссылка на null.");
         myHashMap.clear();
         System.out.println("Размер списка - " + myHashMap.size());
+
         System.out.print("\n----------------------------------------------------------------------\n");
 
 
