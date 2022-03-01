@@ -48,28 +48,33 @@ public class MyHashMap<K, V> {
 
     public V get (Object key) {
         Node currentElement = first.next;
-        while ( !(currentElement.key).equals(key) ){
-            currentElement = currentElement.next;
-        }
-        return (V) currentElement.value;
+        while ((currentElement) != null) {
+               if (!(currentElement.key).equals(key)) {
+                   currentElement = currentElement.next;
+               } else {
+                   return (V) currentElement.value;
+               }
+           }
+        throw new MyIllegalArgumentException( "запрос ключа, которого нет ");
     }
 
     public void remove (Object key) {
-
         Node deletedElement = first.next;
-        while ( !(deletedElement.key).equals(key) ){
-            deletedElement = deletedElement.next;
+        while (deletedElement != null) {
+            if (!(deletedElement.key.equals(key))) {
+                deletedElement = deletedElement.next;
+            } else {
+                Node previousOfDeleted = deletedElement.prev;
+                Node nextOfDeleted = deletedElement.next;
+
+                previousOfDeleted.next = nextOfDeleted;
+                nextOfDeleted.prev = previousOfDeleted;
+                size--;
+                break;
+            }
         }
-
-        Node previousOfDeleted = deletedElement.prev;
-        Node nextOfDeleted = deletedElement.next;
-
-        previousOfDeleted.next = nextOfDeleted;
-        nextOfDeleted.prev = previousOfDeleted;
-        size--;
+       if (deletedElement == null) throw new  MyIllegalArgumentException( "Удаление  пары, в которой нет такого ключа");
     }
-
-
 
     public void clear() {
         first.next = last;

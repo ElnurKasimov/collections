@@ -109,16 +109,7 @@ public class CollectionsTesting {
         // -------------------------проверка класса MyHashMap-----------------------------------------------
 
         System.out.print("\n----------------------------------проверка класса MyHashMap------------------------------------\n");
-        /*
-        MyHashMap <String , String>  myHashMap = new MyHashMap<>();
-        myHashMap.put("Сан Саныч", "321-48-65");
-        myHashMap.put("Валентина Ивановна", "846-67-52");
-        myHashMap.put("Жена", "4356-45-78");
-        myHashMap.put("Офис", "735-42-67");
-        myHashMap.put("Сан Саныч", "111-11-11");
-        myHashMap.put("Светка", "369-25-74");
-        myHashMap.put("Теща", "137-764-52");
-        */
+
         MyHashMap <Integer , String>  myHashMap = new MyHashMap<>();
         myHashMap.put(1, "первый");
         myHashMap.put(2, "второй");
@@ -134,8 +125,20 @@ public class CollectionsTesting {
         System.out.println("Проверяем метод get(Object key). ");
         System.out.println("Для ключа 1 значение - " + myHashMap.get(1).toString());
         System.out.println("Для ключа 2 значение - " + myHashMap.get(2).toString());
-        System.out.println("Проверяем метод remove(Object key). Удаляем пару значений \'1 - пятый \' и распечатываем все элементы коллекции ");
-        myHashMap.remove(1);
+        try {
+            System.out.println("Для ключа 7 значение - " + myHashMap.get(7).toString());
+        }
+        catch (MyIllegalArgumentException e) {
+            System.out.println("---------- исключение перехватилось - Запрос ключа, которого нет --------- ");
+        }
+        System.out.println("Проверяем метод remove(Object key). Два раза удаляем пару значений \'1 - пятый \'  и распечатываем все элементы коллекции ");
+        try {
+            myHashMap.remove(1);
+            myHashMap.remove(1);
+        }
+        catch (MyIllegalArgumentException e) {
+          System.out.println("--------- исключение перехватилось - Попытка удалить пару с ключом, которого нет --------");
+        }
         myHashMap.printAll();
         System.out.println("Размер списка после удаления этой пары - " + myHashMap.size());
         System.out.println("Проверяем метод clear(). Распечатать список после его очистки не можем, так как будет ссылка на null.");
