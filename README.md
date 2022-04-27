@@ -1,2 +1,2 @@
 # collections
-моя реализация коллекций ArrayList, LinkedList, Queue, Stack, HashMap
+my implementation of ArrayList, LinkedList, Queue, Stack, HashMap
